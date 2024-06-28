@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portfolio - Sanmarg Borkakoti</title>
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto+Slab:700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.3/mobile-detect.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r72/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="scripts.js"></script>
+    <style>
+      .contact-form {
+        display: none;
+        margin-top: 20px;
+      }
+
+      .contact-form.show {
+        display: block;
+      }
+
+      .contact-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 14px;
+      }
+
+      .contact-form button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .contact-form button:hover {
+        background-color: #45a049;
+      }
+    </style>
+    <style>
+      .aboutSkills {
+        display: none;
+        margin-top: 20px;
+      }
+
+      .aboutSkills.show {
+        display: block;
+      }
+
+      .about-me-content {
+        display: flex;
+        align-items: center;
+      }
+
+      .about-me-content img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-right: 20px;
+      }
+
+      .about-me-content div {
+        font-size: 16px;
+        line-height: 1.6;
+        width: 60%;
+        text-wrap: pretty;
+      }
+    </style>
+
+    <style>
+      @import url("https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css");
+      @import url("https://fonts.googleapis.com/css2?family=Jura:wght@500;600;900&display=swap");
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body-skills {
+        --color: rgba(30, 30, 30);
+        --bgColor: rgba(245, 245, 245);
+        min-height: 100vh;
+        display: grid;
+        align-content: center;
+        gap: 2rem;
+        padding: 2rem;
+        font-family: "Jura", sans-serif;
+        color: var(--color);
+        background: var(--bgColor);
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      ul {
+        width: 100%;
+        margin-inline: auto;
+        display: flex;
+        justify-content: space-around;
+        list-style: none;
+      }
+
+      ul li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      ul li .icon {
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 1.5rem;
+        border: 0.2rem solid var(--bgColor);
+        border-radius: 50%;
+        background: var(--accent-color);
+        box-shadow: -0.3rem 0.3rem 0.6rem rgba(0, 0, 0, 0.45),
+          inset -0.15rem 0.15rem 0.3rem rgba(0, 0, 0, 0.45);
+      }
+
+      ul li .title {
+        margin-block: 0.3rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      ul li .descr {
+        font-size: 0.7rem;
+        text-wrap: pretty;
+      }
+
+      .credits {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+      }
+
+      .credits a {
+        color: var(--color);
+      }
+      .about-me-header {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <canvas id="stars"></canvas>
+      <div class="container">
+        <div class="template color-yellow" data-template="home">
+          <main>
+            <h1>
+              <span><mark>Hi!</mark> I'm Sanmarg Borkakoti, </span
+              ><span>an aspiring web and RPA developer</span>
+            </h1>
+            <div class="p">
+              <span>sanmarg.borkakoti@gmail.com</span
+              ><span>+91 6002697543</span>
+            </div>
+            <div class="links">
+              <a
+                class="link color-green"
+                href="https://beta.yahiarefaiea.com/#bucket"
+                title="View my bucket list"
+                target="_blank"
+                >View my projects</a
+              >
+              <a
+                class="link color-yellow"
+                href="https://beta.yahiarefaiea.com/#secret"
+                title="Tell me a secret"
+                target="_blank"
+                >Download my resume</a
+              >
+              <a
+                class="link color-red"
+                id="aboutMeLink"
+                title="About Me"
+                onclick="toggleSection('aboutSkills')"
+                >About Me</a
+              >
+              <a
+                class="link color-blue"
+                id="contactMeLink"
+                title="Contact me"
+                onclick="toggleSection('contactForm')"
+                >Contact Me</a
+              >
+            </div>
+            <!-- Contact Form -->
+            <div class="contact-form" id="contactForm">
+              <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required />
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+
+                <label for="message">Message:</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                ></textarea>
+
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+            <!-- About Me Section -->
+            <div class="aboutSkills" id="aboutSkills">
+              <div class="about-me" id="aboutMe">
+                <br />
+                <div class="about-me-content">
+                  <img src="testimonial-2.jpg" alt="Profile Picture" />
+                  <div>
+                    I am a dedicated and versatile professional with a Bachelor
+                    of Technology (B.Tech) in Computer Science from Sikkim
+                    Manipal Institute of Technology. My diverse experience spans
+                    web development, RPA development, and data analysis honed
+                    through hands-on internships and projects.
+                  </div>
+                </div>
+                <br />
+              </div>
+              <br />
+              <h4>SKILLS</h4>
+              <br />
+              <div class="body-skills">
+                <ul>
+                  <li style="--accent-color: #fcba35">
+                    <div class="icon"><i class="fa-brands fa-css3"></i></div>
+                    <div class="title">RPA Development</div>
+                    <div class="descr">Process Automation, UIPATH</div>
+                  </li>
+                  <li style="--accent-color: #dae438">
+                    <div class="icon"><i class="fa-brands fa-js"></i></div>
+                    <div class="title">MS Office</div>
+                    <div class="descr">Profiency in MS Office tools</div>
+                  </li>
+                  <li style="--accent-color: #f20071">
+                    <div class="icon"><i class="fa-brands fa-html5"></i></div>
+                    <div class="title">Web Development</div>
+                    <div class="descr">HTML/CSS/JS</div>
+                  </li>
+                  <li style="--accent-color: #994d7f">
+                    <div class="icon"><i class="fa-brands fa-github"></i></div>
+                    <div class="title">Github</div>
+                    <div class="descr">Collaboration, command Line</div>
+                  </li>
+                  <li style="--accent-color: #60c5a6">
+                    <div class="icon"><i class="fa-brands fa-codepen"></i></div>
+                    <div class="title">Data Analysis</div>
+                    <div class="descr">
+                      Visualization, warehousing, Power BI
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </main>
+          <footer>
+            <div class="links">
+              <a
+                class="link small alt"
+                href="http://facebook.com/YahiaRefaiea"
+                title="Facebook (@YahiaRefaiea)"
+                target="_blank"
+                >Facebook</a
+              ><a
+                class="link small alt"
+                href="http://twitter.com/YahiaRefaiea"
+                title="Twitter (@YahiaRefaiea)"
+                target="_blank"
+                >Twitter</a
+              ><a
+                class="link small alt"
+                href="http://codepen.io/YahiaRefaiea"
+                title="Codepen (@YahiaRefaiea)"
+                target="_blank"
+                >Codepen</a
+              ><a
+                class="link small alt"
+                href="http://github.com/YahiaRefaiea"
+                title="GitHub (@YahiaRefaiea)"
+                target="_blank"
+                >GitHub</a
+              >
+            </div>
+          </footer>
+        </div>
+        <div class="loading" id="identity" title="Yahia Refaiea identity">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <a
+          class="loading"
+          id="signature"
+          href="https://beta.yahiarefaiea.com/"
+          title="Go to home"
+          target="_blank"
+        ></a>
+      </div>
+    </div>
+    <script>
+      function toggleSection(sectionId) {
+        var contactForm = document.getElementById("contactForm");
+        var aboutSkills = document.getElementById("aboutSkills");
+
+        if (sectionId === "contactForm") {
+          if (aboutSkills.classList.contains("show")) {
+            aboutSkills.classList.remove("show");
+          }
+          contactForm.classList.toggle("show");
+        } else if (sectionId === "aboutSkills") {
+          if (contactForm.classList.contains("show")) {
+            contactForm.classList.remove("show");
+          }
+          aboutSkills.classList.toggle("show");
+        }
+      }
+    </script>
+  </body>
+</html>
