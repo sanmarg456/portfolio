@@ -179,6 +179,98 @@
         text-align: center;
       }
     </style>
+
+    <style>
+      .grid {
+        display: none;
+        grid-template-columns: repeat(auto-fill, minmax(236px, 1fr));
+        grid-gap: 20px;
+        align-items: stretch;
+        margin-top: 30px;
+      }
+
+      .grid.show {
+        display: grid;
+      }
+
+      .grid > article {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #ccc;
+        box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .grid > article img {
+        max-width: 100%;
+        max-height: 58%;
+        display: block;
+      }
+
+      .grid > article .text1 {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        flex-grow: 1;
+        opacity: 1;
+        transition: visibility 0s, opacity 0.5s linear;
+        text-wrap: pretty;
+      }
+
+      .grid > article .text1 h3 {
+        margin-bottom: 10px;
+        display: block;
+        visibility: visible !important;
+      }
+
+      .grid > article .text1 p {
+        display: none;
+      }
+
+      .grid > article:hover img {
+        display: none;
+      }
+
+      .grid > article:hover .text1 {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .grid > article:hover .text1 p {
+        display: block;
+      }
+
+      .grid > article .text1 h3 {
+        display: block;
+        visibility: visible;
+      }
+
+      .grid > article:hover .text1 h3 {
+        display: block;
+      }
+
+      .grid > article .text1 button {
+        margin-top: auto;
+        background: gray;
+        border: 0;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 0.5s linear;
+      }
+
+      .grid > article:hover .text1 button {
+        opacity: 1;
+        margin-top: auto;
+        background: gray;
+        border: 0;
+        color: white;
+        padding: 10px;
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
@@ -197,16 +289,17 @@
             <div class="links">
               <a
                 class="link color-green"
-                href="https://beta.yahiarefaiea.com/#bucket"
+                id="viewProjectsLink"
                 title="View my bucket list"
-                target="_blank"
+                onclick="toggleSection('grid')"
                 >View my projects</a
               >
               <a
                 class="link color-yellow"
-                href="https://beta.yahiarefaiea.com/#secret"
+                href="assets/Sanmarg-Borkakoti-FlowCV-Resume-20240610.pdf"
                 title="Tell me a secret"
                 target="_blank"
+                download
                 >Download my resume</a
               >
               <a
@@ -229,10 +322,8 @@
               <form>
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required />
-
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required />
-
                 <label for="message">Message:</label>
                 <textarea
                   id="message"
@@ -240,7 +331,6 @@
                   rows="4"
                   required
                 ></textarea>
-
                 <button type="submit">Submit</button>
               </form>
             </div>
@@ -266,12 +356,16 @@
               <div class="body-skills">
                 <ul>
                   <li style="--accent-color: #fcba35">
-                    <div class="icon"><i class="fa-brands fa-css3"></i></div>
+                    <div class="icon">
+                      <i class="fa-regular fa-bolt-auto"></i>
+                    </div>
                     <div class="title">RPA Development</div>
                     <div class="descr">Process Automation, UIPATH</div>
                   </li>
                   <li style="--accent-color: #dae438">
-                    <div class="icon"><i class="fa-brands fa-js"></i></div>
+                    <div class="icon">
+                      <i class="fa-brands fa-microsoft"></i>
+                    </div>
                     <div class="title">MS Office</div>
                     <div class="descr">Profiency in MS Office tools</div>
                   </li>
@@ -295,38 +389,76 @@
                 </ul>
               </div>
             </div>
+
+            <div class="grid" id="grid">
+              <article>
+                <img src="assets/powerbi.webp" alt="Sample photo" />
+                <div class="text1">
+                  <h3>Super Store Sales data visualization using PowerBI</h3>
+                  <p>
+                    Interactive Power BI dashboards for sales data analysis,
+                    revealing key metrics and trends for operational insights.
+                  </p>
+                  <button>Here's how</button>
+                </div>
+              </article>
+              <article>
+                <img src="assets/uipath.jpg" alt="Sample photo" />
+                <div class="text1">
+                  <h3>Data extraction using UiPath RPA</h3>
+                  <p>
+                    RPA bot for extracting data from online shoe and clothing
+                    websites. Enhanced efficiency, categorization and storage.
+                  </p>
+                  <button>Here's how</button>
+                </div>
+              </article>
+              <article>
+                <img src="assets/sentimen-analysis.png" alt="Sample photo" />
+                <div class="text1">
+                  <h3>Sentiment Analysis of Amazon Product Reviews</h3>
+                  <p>
+                    Sentiment analysis of Amazon product reviews, extracting
+                    insights from unstructured data. Implemented ML models with
+                    80% accuracy
+                  </p>
+                  <button>Read more</button>
+                </div>
+              </article>
+            </div>
           </main>
+
           <footer>
             <div class="links">
               <a
                 class="link small alt"
-                href="http://facebook.com/YahiaRefaiea"
-                title="Facebook (@YahiaRefaiea)"
+                href="http://facebook.com/"
+                title="Facebook (@sanmarg456)"
                 target="_blank"
                 >Facebook</a
               ><a
                 class="link small alt"
-                href="http://twitter.com/YahiaRefaiea"
-                title="Twitter (@YahiaRefaiea)"
+                href="http://twitter.com/"
+                title="Twitter (@sanmarg456)"
                 target="_blank"
                 >Twitter</a
               ><a
                 class="link small alt"
-                href="http://codepen.io/YahiaRefaiea"
-                title="Codepen (@YahiaRefaiea)"
+                href="http://codepen.io/"
+                title="Codepen (@sanmarg456)"
                 target="_blank"
                 >Codepen</a
               ><a
                 class="link small alt"
-                href="http://github.com/YahiaRefaiea"
-                title="GitHub (@YahiaRefaiea)"
+                href="https://github.com/sanmarg456/portfolio"
+                title="GitHub (@sanmarg456)"
                 target="_blank"
                 >GitHub</a
               >
             </div>
           </footer>
         </div>
-        <div class="loading" id="identity" title="Yahia Refaiea identity">
+        <div class="loading" id="identity" title="Sanmarg Borkakoti identity">
           <div></div>
           <div></div>
           <div></div>
@@ -335,27 +467,90 @@
         <a
           class="loading"
           id="signature"
-          href="https://beta.yahiarefaiea.com/"
+          href="https://github.com/sanmarg456/"
           title="Go to home"
           target="_blank"
         ></a>
       </div>
     </div>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+        serverTimestamp,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyBVL5QO2J8FswRDnC9P3j_T4lbiOnmq72o",
+        authDomain: "sanmarg-825a6.firebaseapp.com",
+        projectId: "sanmarg-825a6",
+        storageBucket: "sanmarg-825a6.appspot.com",
+        messagingSenderId: "542984056990",
+        appId: "1:542984056990:web:95716d5ac3607a092c8b8f",
+        measurementId: "G-LDK3YXVVSJ",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      document
+        .querySelector("#contactForm form")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const message = document.getElementById("message").value;
+
+          try {
+            await addDoc(collection(db, "contacts"), {
+              name: name,
+              email: email,
+              message: message,
+              timestamp: serverTimestamp(),
+            });
+            alert("Form submitted successfully!");
+            document.querySelector("#contactForm form").reset();
+          } catch (error) {
+            console.error("Error submitting form: ", error);
+            alert("Error submitting form. Please try again.");
+          }
+        });
+    </script>
     <script>
       function toggleSection(sectionId) {
-        var contactForm = document.getElementById("contactForm");
-        var aboutSkills = document.getElementById("aboutSkills");
+        const contactForm = document.getElementById("contactForm");
+        const aboutSkills = document.getElementById("aboutSkills");
 
         if (sectionId === "contactForm") {
           if (aboutSkills.classList.contains("show")) {
             aboutSkills.classList.remove("show");
+          } else if (
+            document.getElementById("grid").classList.contains("show")
+          ) {
+            document.getElementById("grid").classList.remove("show");
           }
           contactForm.classList.toggle("show");
         } else if (sectionId === "aboutSkills") {
           if (contactForm.classList.contains("show")) {
             contactForm.classList.remove("show");
+          } else if (
+            document.getElementById("grid").classList.contains("show")
+          ) {
+            document.getElementById("grid").classList.remove("show");
           }
           aboutSkills.classList.toggle("show");
+        } else if (sectionId === "grid") {
+          if (contactForm.classList.contains("show")) {
+            contactForm.classList.remove("show");
+          }
+          if (aboutSkills.classList.contains("show")) {
+            aboutSkills.classList.remove("show");
+          }
+          document.getElementById("grid").classList.toggle("show");
         }
       }
     </script>
